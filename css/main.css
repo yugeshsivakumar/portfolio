@@ -35,6 +35,7 @@
  *
  * ------------------------------------------------------------------- 
  */
+@import url("fonts.css");
 @import url("font-awesome/css/font-awesome.min.css");
 @import url("micons/micons.css");
 
@@ -523,6 +524,7 @@ select {
 	padding: 1.5rem 0;
 	border: 0;
 	outline: none;
+	vertical-align: middle;
 	color: #313131;
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.5rem;
@@ -551,18 +553,6 @@ select {
 	margin: 0;
 	line-height: 3rem;
 	vertical-align: middle;
-}
-
-.button-download {
-	background-color: #FF0077;
-	color: #FFFFFF;
-	padding: 10px 20px;
-	border-radius: 5px;
-	text-decoration: none;
-}
-
-.button-download:hover {
-	background-color: #FF0055;
 }
 .ss-custom-select select option {
 	padding-left: 2rem;
