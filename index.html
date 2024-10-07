@@ -37,13 +37,15 @@
    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
    <script>
-      // Function to show the loading content and CAPTCHA
+      // Function to show the DotLottie player and loading text after a 6-second delay
       function showLoadingContent() {
          document.getElementById("lottie-player").style.display = "block"; // Show DotLottie player
          document.getElementById("loading-text").style.display = "block"; // Show loading text
-         
-         // Show CAPTCHA immediately after the loading content
-         document.getElementById("captcha-container").style.display = "block"; // Show CAPTCHA
+
+         // After 4 seconds of showing the loading content, show the CAPTCHA
+         setTimeout(function() {
+            document.getElementById("captcha-container").style.display = "block"; // Show CAPTCHA
+         }, 4000); // 4 seconds delay for the CAPTCHA
       }
 
       function onCaptchaSuccess(token) {
@@ -51,8 +53,8 @@
          window.location.href = "portfolio.html";
       }
 
-      // Load everything after a 2-second delay
-      setTimeout(showLoadingContent, 2000); // 2 seconds delay for loading content
+      // Show loading content after 6 seconds
+      setTimeout(showLoadingContent, 6000); // 6 seconds delay
    </script>
 </head>
 <body>
