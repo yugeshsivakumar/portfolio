@@ -6,7 +6,7 @@
 
 ## TechStack 🗒️
 
-![My Skills](https://skillicons.dev/icons?i=html,css,javascript,php,git,vscode)
+![My Skills](https://skillicons.dev/icons?i=html,css,javascript,firebase,git,vscode)
 
 ## Sections 🔖
 - `About`
