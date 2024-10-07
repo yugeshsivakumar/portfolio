@@ -21,10 +21,7 @@
       dotlottie-player {
          width: 400px; /* Adjust width as desired */
          height: 400px; /* Adjust height as desired */
-      }
-
-      #content {
-         display: none; /* Hide content until CAPTCHA is passed */
+         display: none; /* Hide initially until CAPTCHA is passed */
       }
    </style>
 
@@ -33,11 +30,11 @@
 
    <script>
       function onCaptchaSuccess(token) {
-         // Once CAPTCHA is successfully passed, show the content
-         document.getElementById("content").style.display = "block";
+         // Once CAPTCHA is successfully passed, show the DotLottie player
+         document.getElementById("content").style.display = "block"; // Show the content
          document.getElementById("captcha-container").style.display = "none"; // Hide the CAPTCHA
 
-         // After 5 seconds, redirect to the portfolio page
+         // Automatically redirect after 5 seconds
          setTimeout(function() {
             window.location.href = "portfolio.html";
          }, 5000); // 5 seconds delay
@@ -51,12 +48,9 @@
 
    <!-- Your loading content (DotLottie Player) -->
    <div id="content">
-      <dotlottie-player 
-         src="https://lottie.host/41131b61-73c1-40c5-9e81-72afc1cdb5b7/q0vxYtucFD.json" 
-         background="transparent" 
-         speed="1" 
-         loop autoplay>
-      </dotlottie-player>
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+      <dotlottie-player src="https://lottie.host/638e7cc4-6515-42f7-af8b-0671006cab66/0al9zw5NXR.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
       <p style="text-align: center;">Loading portfolio, please wait...</p>
    </div>
 
