@@ -3,8 +3,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Loading....</title>
+   <title>Loading...</title>
    <link rel="icon" href="assets/images/icons8-loading-100.png" type="image/png"> <!-- Link to your loading icon -->
+   
    <style>
       body {
          display: flex;
@@ -14,30 +15,50 @@
          height: 100vh;
          margin: 0;
          background-color: black;
+         color: white; /* Text color for better contrast */
       }
 
       dotlottie-player {
          width: 400px; /* Adjust width as desired */
          height: 400px; /* Adjust height as desired */
       }
-   </style>
-</head>
-<body>
-   <!-- DotLottie Player -->
-   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
-   <dotlottie-player 
-      src="https://lottie.host/41131b61-73c1-40c5-9e81-72afc1cdb5b7/q0vxYtucFD.json" 
-      background="transparent" 
-      speed="1" 
-      loop autoplay>
-   </dotlottie-player>
+      #content {
+         display: none; /* Hide content until CAPTCHA is passed */
+      }
+   </style>
+
+   <!-- Turnstile Script -->
+   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
    <script>
-      // Redirect to index.html after 5 seconds (5000 milliseconds)
-      setTimeout(function() {
-         window.location.href = "portfolio.html";
-      }, 5000);
+      function onCaptchaSuccess(token) {
+         // Once CAPTCHA is successfully passed, show the content
+         document.getElementById("content").style.display = "block";
+         document.getElementById("captcha-container").style.display = "none"; // Hide the CAPTCHA
+
+         // After 5 seconds, redirect to the portfolio page
+         setTimeout(function() {
+            window.location.href = "portfolio.html";
+         }, 5000); // 5 seconds delay
+      }
    </script>
+</head>
+<body>
+
+   <!-- Turnstile CAPTCHA -->
+   <div id="captcha-container" class="cf-turnstile" data-sitekey="0x4AAAAAAAw55oPqZ_c8q3Vx" data-callback="onCaptchaSuccess"></div>
+
+   <!-- Your loading content (DotLottie Player) -->
+   <div id="content">
+      <dotlottie-player 
+         src="https://lottie.host/41131b61-73c1-40c5-9e81-72afc1cdb5b7/q0vxYtucFD.json" 
+         background="transparent" 
+         speed="1" 
+         loop autoplay>
+      </dotlottie-player>
+      <p>Loading portfolio, please wait...</p>
+   </div>
+
 </body>
 </html>
