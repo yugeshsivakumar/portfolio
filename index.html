@@ -23,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    
+<!-- 
     <style>
       /* Fullscreen prompt overlay */
       #fullscreen-overlay {
@@ -38,14 +38,14 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
       }
 
       /* Full-screen button styling */
       #fullscreen-btn {
         padding: 15px 30px;
         font-size: 18px;
-        background-color: #007BFF;
+        background-color: #007bff;
         color: white;
         border: none;
         border-radius: 5px;
@@ -60,7 +60,7 @@
       #main-content {
         display: none;
       }
-    </style>
+    </style> -->
   </head>
 
   <body>
@@ -71,7 +71,6 @@
 
     <!-- Main content of the website (hidden initially) -->
 
-
     <script>
       // Get elements
       const fullscreenButton = document.getElementById("fullscreen-btn");
@@ -79,16 +78,19 @@
       const mainContent = document.getElementById("main-content");
 
       // Full-screen toggle functionality on button click
-      fullscreenButton.addEventListener("click", function() {
+      fullscreenButton.addEventListener("click", function () {
         if (!document.fullscreenElement) {
           // Request full-screen mode
-          document.documentElement.requestFullscreen().then(() => {
-            // After full-screen mode is entered, hide the overlay and show the content
-            fullscreenOverlay.style.display = 'none';
-            mainContent.style.display = 'block';
-          }).catch(err => {
-            console.log("Error entering full-screen:", err);
-          });
+          document.documentElement
+            .requestFullscreen()
+            .then(() => {
+              // After full-screen mode is entered, hide the overlay and show the content
+              fullscreenOverlay.style.display = "none";
+              mainContent.style.display = "block";
+            })
+            .catch((err) => {
+              console.log("Error entering full-screen:", err);
+            });
         }
       });
     </script>
@@ -203,6 +205,15 @@
             <li class="social-item">
               <a href="https://medium.com/@Yugesh_S" class="social-link">
                 <ion-icon name="logo-medium"></ion-icon>
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a
+                href="https://www.reddit.com/user/Obvious-Nothing-6001/"
+                class="social-link"
+              >
+                <ion-icon name="logo-reddit"></ion-icon>
               </a>
             </li>
           </ul>
@@ -655,7 +666,7 @@
               </li>
             </ul>
           </section>
-                    <div class="button-container">
+          <div class="button-container">
             <a
               href="https://medium.com/@Yugesh_S"
               class="download-button"
@@ -851,7 +862,7 @@
               </li>
             </ul>
           </section>
-                    <div class="button-container">
+          <div class="button-container">
             <a
               href="https://github.com/yugeshsivakumar?tab=repositories"
               class="download-button"
@@ -866,63 +877,117 @@
       -->
 
         <article class="contact" data-page="contact">
-    <header>
-        <h2 class="h2 article-title">Contact</h2>
-    </header>
+          <header>
+            <h2 class="h2 article-title">Contact</h2>
+          </header>
 
-    <section class="mapbox" data-mapbox>
-        <figure>
-            <iframe
+          <section class="mapbox" data-mapbox>
+            <figure>
+              <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15514.828354261715!2d80.2398042620824!3d13.082680220941259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265d8a5b06ecb%3A0x6f39942d45df4fb7!2sChennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1696563793456!5m2!1sen!2sus"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                width="400"
-                height="300"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
                 loading="lazy"
-            ></iframe>
-        </figure>
-    </section>
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </figure>
+          </section>
 
-    <section class="contact-form">
-        <h3 class="h3 form-title">Contact Form</h3>
+          <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
 
-        <form action="send_email.php" method="POST" class="form" data-form>
-            <div class="input-wrapper">
+            <form class="form" data-form>
+              <div class="input-wrapper">
                 <input
-                    type="text"
-                    name="fullname"
-                    class="form-input"
-                    placeholder="Full name"
-                    required
-                    data-form-input
+                  type="text"
+                  name="fullname"
+                  class="form-input"
+                  placeholder="Full name"
+                  required
+                  data-form-input
                 />
 
                 <input
-                    type="email"
-                    name="email"
-                    class="form-input"
-                    placeholder="Email address"
-                    required
-                    data-form-input
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Email address"
+                  required
+                  data-form-input
                 />
-            </div>
+              </div>
 
-            <textarea
+              <textarea
                 name="message"
                 class="form-input"
                 placeholder="Your Message"
                 required
                 data-form-input
-            ></textarea>
+              ></textarea>
 
-            <button class="form-btn" type="submit" disabled data-form-btn>
+              <button class="form-btn" type="submit" disabled data-form-btn>
                 <ion-icon name="paper-plane"></ion-icon>
                 <span>Send Message</span>
-            </button>
-        </form>
-    </section>
-</article>
+              </button>
+            </form>
+          </section>
+          <script src="config.js"></script>
+          <!-- Include config.js first -->
+          <script type="module">
+            // Import the Firebase SDK and Firestore functions for the browser
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+            import {
+              getFirestore,
+              collection,
+              addDoc,
+              serverTimestamp,
+            } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig); // Use the firebaseConfig from config.js
+            const db = getFirestore(app);
+
+            // Select the form and button elements
+            const form = document.querySelector("[data-form]");
+            const formInputs = document.querySelectorAll("[data-form-input]");
+            const formBtn = document.querySelector("[data-form-btn]");
+
+            // Enable the submit button when all fields are filled
+            formInputs.forEach((input) => {
+              input.addEventListener("input", () => {
+                formBtn.disabled = !form.checkValidity();
+              });
+            });
+
+            // Handle form submission
+            form.addEventListener("submit", async (e) => {
+              e.preventDefault();
+
+              const fullName = form.fullname.value;
+              const email = form.email.value;
+              const message = form.message.value;
+
+              try {
+                // Add form data to Firebase Firestore
+                await addDoc(collection(db, "messages"), {
+                  fullName: fullName,
+                  email: email,
+                  message: message,
+                  timestamp: serverTimestamp(),
+                });
+
+                alert("Message sent successfully! ✅");
+                form.reset();
+                formBtn.disabled = true; // Reset the button state
+              } catch (error) {
+                console.error("Error writing document: ", error);
+                alert("Error sending message. Please try again later ❌.");
+              }
+            });
+          </script>
+        </article>
       </div>
     </main>
 
