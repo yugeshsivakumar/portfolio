@@ -3,8 +3,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Loading...</title>
-   <link rel="icon" href="assets/images/icons8-loading-100.png" type="image/png"> <!-- Ensure this path is correct -->
+   <title>Yugesh portfolio</title>
+   <link rel="icon" href="assets/images/icons8.png" type="image/png"> <!-- Ensure this path is correct -->
 
    <style>
       body {
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-   <!-- Your loading content (DotLottie Player) -->
+   <!-- Loading animation (DotLottie Player) -->
    <dotlottie-player 
       id="lottie-player" 
       src="https://lottie.host/638e7cc4-6515-42f7-af8b-0671006cab66/0al9zw5NXR.json" 
@@ -63,16 +63,17 @@
          // After 4 seconds of showing the loading content, show the CAPTCHA
          setTimeout(function() {
             document.getElementById("captcha-container").style.display = "block"; // Show CAPTCHA
-         }, 4000); // 4 seconds delay for the CAPTCHA
+         }, 5000); // 5 seconds delay for the CAPTCHA
       }
 
+      // This function is triggered after CAPTCHA is successfully passed
       function onCaptchaSuccess(token) {
-         // Once CAPTCHA is successfully passed, redirect to the portfolio page
+         // Redirect to the portfolio page after successful CAPTCHA verification
          window.location.href = "portfolio.html";
       }
 
-      // Show loading content after 6 seconds
-      setTimeout(showLoadingContent, 6000); // 6 seconds delay
+      // Show loading content after 0.5 seconds
+      setTimeout(showLoadingContent, 500); // 0.5 seconds delay
    </script>
 </body>
 </html>
