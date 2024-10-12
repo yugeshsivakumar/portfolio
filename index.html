@@ -1,79 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Yugesh portfolio</title>
-   <link rel="icon" href="assets/images/icons8.png" type="image/png"> <!-- Ensure this path is correct -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yugesh Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Yugesh S, Yugesh S, Yugesh Sivakumar, portfolio, "
+    />
+    <meta
+      name="keywords"
+      content="Yugesh, Yugesh S, Yugesh Sivakumar, portfolio, software engineer, data engineer"
+    />
+    <link rel="icon" href="assets/images/icons8.png" type="image/png" />
 
-   <style>
+    <style>
       body {
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-         height: 100vh;
-         margin: 0;
-         background-color: black;
-         color: white; /* Text color for better contrast */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+        color: white;
       }
 
       #lottie-player {
-         width: 400px; /* Adjust width as desired */
-         height: 400px; /* Adjust height as desired */
-         display: none; /* Hide initially */
+        width: 400px;
+        height: 400px;
+        display: none;
       }
 
       #loading-text {
-         display: none; /* Hide loading text initially */
+        display: none;
       }
 
       #captcha-container {
-         display: none; /* Hide CAPTCHA initially */
+        display: none;
       }
-   </style>
+    </style>
 
-   <!-- Turnstile Script -->
-   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-</head>
-<body>
+    <!-- Turnstile Script -->
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- Loading animation -->
+    <dotlottie-player
+      id="lottie-player"
+      src="https://lottie.host/638e7cc4-6515-42f7-af8b-0671006cab66/0al9zw5NXR.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay
+    >
+    </dotlottie-player>
+    <p id="loading-text" style="text-align: center">
+      Loading portfolio, please wait...
+    </p>
 
-   <!-- Loading animation (DotLottie Player) -->
-   <dotlottie-player 
-      id="lottie-player" 
-      src="https://lottie.host/638e7cc4-6515-42f7-af8b-0671006cab66/0al9zw5NXR.json" 
-      background="transparent" 
-      speed="1" 
-      loop 
-      autoplay>
-   </dotlottie-player>
-   <p id="loading-text" style="text-align: center;">Loading portfolio, please wait...</p>
+    <!-- Turnstile CAPTCHA -->
+    <div
+      id="captcha-container"
+      class="cf-turnstile"
+      data-sitekey="0x4AAAAAAAw55oPqZ_c8q3Vx"
+      data-callback="onCaptchaSuccess"
+    ></div>
 
-   <!-- Turnstile CAPTCHA -->
-   <div id="captcha-container" class="cf-turnstile" data-sitekey="0x4AAAAAAAw55oPqZ_c8q3Vx" data-callback="onCaptchaSuccess"></div>
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
 
-   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-
-   <script>
-      // Function to show the DotLottie player and loading text after a 6-second delay
+    <script>
       function showLoadingContent() {
-         document.getElementById("lottie-player").style.display = "block"; // Show DotLottie player
-         document.getElementById("loading-text").style.display = "block"; // Show loading text
+        document.getElementById("lottie-player").style.display = "block";
+        document.getElementById("loading-text").style.display = "block";
 
-         // After 4 seconds of showing the loading content, show the CAPTCHA
-         setTimeout(function() {
-            document.getElementById("captcha-container").style.display = "block"; // Show CAPTCHA
-         }, 5000); // 5 seconds delay for the CAPTCHA
+        setTimeout(function () {
+          document.getElementById("captcha-container").style.display = "block";
+        }, 5000);
       }
 
-      // This function is triggered after CAPTCHA is successfully passed
       function onCaptchaSuccess(token) {
-         // Redirect to the portfolio page after successful CAPTCHA verification
-         window.location.href = "portfolio.html";
+        window.location.href = "portfolio.html";
       }
 
-      // Show loading content after 0.5 seconds
-      setTimeout(showLoadingContent, 500); // 0.5 seconds delay
-   </script>
-</body>
+      setTimeout(showLoadingContent, 300);
+    </script>
+  </body>
 </html>
