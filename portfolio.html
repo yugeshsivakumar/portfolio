@@ -864,14 +864,15 @@
         - #CONTACT
       -->
 
-        <article class="contact" data-page="contact">
-          <header>
-            <h2 class="h2 article-title">Contact</h2>
-          </header>
 
-          <section class="mapbox" data-mapbox>
-            <figure>
-              <iframe
+<article class="contact" data-page="contact">
+    <header>
+        <h2 class="h2 article-title">Contact</h2>
+    </header>
+
+    <section class="mapbox" data-mapbox>
+        <figure>
+            <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15514.828354261715!2d80.2398042620824!3d13.082680220941259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265d8a5b06ecb%3A0x6f39942d45df4fb7!2sChennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1696563793456!5m2!1sen!2sus"
                 width="600"
                 height="450"
@@ -879,105 +880,152 @@
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </figure>
-          </section>
+            ></iframe>
+        </figure>
+    </section>
 
-          <section class="contact-form">
-            <h3 class="h3 form-title">Contact Form</h3>
+    <section class="contact-form">
+        <h3 class="h3 form-title">Contact Form</h3>
 
-            <form class="form" data-form>
-              <div class="input-wrapper">
+        <form class="form" data-form>
+            <div class="input-wrapper">
                 <input
-                  type="text"
-                  name="fullname"
-                  class="form-input"
-                  placeholder="Full name"
-                  required
-                  data-form-input
+                    type="text"
+                    name="fullname"
+                    class="form-input"
+                    placeholder="Full name"
+                    required
+                    data-form-input
                 />
 
                 <input
-                  type="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="Email address"
-                  required
-                  data-form-input
+                    type="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="Email address"
+                    required
+                    data-form-input
                 />
-              </div>
+            </div>
 
-              <textarea
+            <textarea
                 name="message"
                 class="form-input"
                 placeholder="Your Message"
                 required
                 data-form-input
-              ></textarea>
+            ></textarea>
 
-              <button class="form-btn" type="submit" disabled data-form-btn>
-                <ion-icon name="paper-plane"></ion-icon>
-                <span>Send Message</span>
-              </button>
-            </form>
-          </section>
-          <script src="assets/js/config.js"></script>
-          <!-- Include config.js first -->
-          <script type="module">
-            // Import the Firebase SDK and Firestore functions for the browser
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-            import {
-              getFirestore,
-              collection,
-              addDoc,
-              serverTimestamp,
-            } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+            <div class="button-wrapper">
+                <button class="form-btn" type="submit" disabled data-form-btn>
+                    <ion-icon name="paper-plane"></ion-icon>
+                    <span>Send Message</span>
+                </button>
 
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig); // Use the firebaseConfig from config.js
-            const db = getFirestore(app);
+                <button class="form-btn" type="button" data-form-btn id="donate-btn">
+                    <ion-icon name="heart"></ion-icon>
+                    <span>Donate</span>
+                </button>
+            </div>
+        </form>
+    </section>
 
-            // Select the form and button elements
-            const form = document.querySelector("[data-form]");
-            const formInputs = document.querySelectorAll("[data-form-input]");
-            const formBtn = document.querySelector("[data-form-btn]");
+    <!-- Donation Popup -->
+    <div id="donation-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3 class="h3 form-title">❤️ Support Me</h3>
+            <div class="donation-option">
+                <a href="https://buymeacoffee.com/yugesh_s" target="_blank" class="donation-link">
+                    <img src="assets/images/bmc.png" alt="Buy Me a Coffee" class="donation-icon">
+                </a>
+            </div>
+            <div class="donation-option">
+                <div class="bitcoin-icon" id="copy-btc-address">
+                    <img src="assets/images/btc.svg" alt="Bitcoin" class="donation-icon">
+                </div>
+            </div>
+            <span class="bitcoin-address" id="btc-address" style="display:none;">bc1qw8g73zlrmnph6lhmrrpmh4lsmwwgqz2kefp387</span>
+        </div>
+    </div>
 
-            // Enable the submit button when all fields are filled
-            formInputs.forEach((input) => {
-              input.addEventListener("input", () => {
+    <script src="assets/js/config.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            serverTimestamp,
+        } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const form = document.querySelector("[data-form]");
+        const formInputs = document.querySelectorAll("[data-form-input]");
+        const formBtn = document.querySelector("[data-form-btn]:last-of-type");
+
+        formInputs.forEach((input) => {
+            input.addEventListener("input", () => {
                 formBtn.disabled = !form.checkValidity();
-              });
             });
+        });
 
-            // Handle form submission
-            form.addEventListener("submit", async (e) => {
-              e.preventDefault();
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-              const fullName = form.fullname.value;
-              const email = form.email.value;
-              const message = form.message.value;
+            const fullName = form.fullname.value;
+            const email = form.email.value;
+            const message = form.message.value;
 
-              try {
-                // Add form data to Firebase Firestore
+            try {
                 await addDoc(collection(db, "messages"), {
-                  fullName: fullName,
-                  email: email,
-                  message: message,
-                  timestamp: serverTimestamp(),
+                    fullName: fullName,
+                    email: email,
+                    message: message,
+                    timestamp: serverTimestamp(),
                 });
 
                 alert("Message sent successfully! ✅");
                 form.reset();
-                formBtn.disabled = true; // Reset the button state
-              } catch (error) {
+                formBtn.disabled = true;
+            } catch (error) {
                 console.error("Error writing document: ", error);
                 alert("Error sending message. Please try again later ❌.");
-              }
+            }
+        });
+
+        // Popup functionality
+        const donationPopup = document.getElementById("donation-popup");
+        const donateBtn = document.getElementById("donate-btn");
+        const closePopup = document.querySelector(".close-popup");
+        const btcAddress = document.getElementById("btc-address");
+
+        donateBtn.addEventListener("click", () => {
+            donationPopup.style.display = "flex"; // Change to flex for proper centering
+        });
+
+        closePopup.addEventListener("click", () => {
+            donationPopup.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === donationPopup) {
+                donationPopup.style.display = "none";
+            }
+        });
+
+        // Copy Bitcoin address to clipboard on icon click
+        document.getElementById("copy-btc-address").addEventListener("click", () => {
+            navigator.clipboard.writeText(btcAddress.innerText).then(() => {
+                alert("Bitcoin address copied to clipboard! 📋");
+            }).catch(err => {
+                console.error("Could not copy text: ", err);
             });
-          </script>
-        </article>
-      </div>
-    </main>
+        });
+    </script>
+</article>
 
     <!--
     - custom js link

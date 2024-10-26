@@ -982,7 +982,6 @@ textarea.form-input {
   resize: vertical;
   margin-bottom: 25px;
 }
-
 textarea.form-input::-webkit-resizer { display: none; }
 
 .form-input:focus:invalid { border-color: var(--bittersweet-shimmer); }
@@ -1003,7 +1002,78 @@ textarea.form-input::-webkit-resizer { display: none; }
   box-shadow: var(--shadow-3);
   z-index: 1;
   transition: var(--transition-1);
+  margin-bottom: 10px;
 }
+    /* Popup styles */
+/* Popup styles */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+}
+
+.popup-content {
+  background: rgb(29, 28, 28);
+
+ /* Gradient background */
+  margin: 15% auto;
+  padding: 30px; /* Increased padding */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  position: relative;
+  text-align: center; /* Center the content */
+}
+
+.close-popup {
+  color: #aaa;
+  position: absolute; /* Change to absolute positioning */
+  top: 10px; /* Distance from the top */
+  right: 15px; /* Distance from the right */
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-popup:hover,
+.close-popup:focus {
+  color: #ffffff; /* Change color on hover */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.donation-option {
+  margin: 20px 0; /* Increased vertical spacing */
+}
+
+.donation-link {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  font-size: 1.2em; /* Slightly larger font size for visibility */
+}
+
+.donation-icon {
+  width: 200px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the icon */
+  display: block; /* Make icon a block element for centering */
+}
+
+.popup h3 {
+  color: #ffffff; /* Title color */
+  margin-bottom: 20px; /* Spacing below the title */
+}
+
+
+
 
 .form-btn::before {
   content: "";
