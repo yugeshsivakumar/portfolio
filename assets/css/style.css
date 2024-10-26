@@ -1013,23 +1013,24 @@ textarea.form-input::-webkit-resizer { display: none; }
   left: 0;
   top: 0;
   width: 100%;
-  height: auto;
+  height: 100%; /* Full height to cover the entire viewport */
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
 }
 
 .popup-content {
- background: linear-gradient(135deg, #191e75, #2e2e2e);
-
- /* Gradient background */
-  margin: 15% auto;
+  background: linear-gradient(135deg, #362b3ea8, #5b5b5b8d); /* Deep Teal to Dark Slate */
+  margin: auto; /* Center the popup content */
   padding: 30px; /* Increased padding */
   border-radius: 8px; /* Rounded corners */
   border: 1px solid #888;
   width: 80%;
   max-width: 500px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-  position: relative;
+  position: absolute; /* Use absolute positioning for centering */
+  top: 50%; /* Move the top to the center */
+  left: 50%; /* Move the left to the center */
+  transform: translate(-50%, -50%); /* Offset the top and left by half its width and height to center it */
   text-align: center; /* Center the content */
 }
 
