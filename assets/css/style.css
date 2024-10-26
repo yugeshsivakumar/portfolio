@@ -1019,7 +1019,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .popup-content {
-  background: rgb(29, 28, 28);
+ background: linear-gradient(135deg, #191e75, #2e2e2e);
 
  /* Gradient background */
   margin: 15% auto;
@@ -1065,6 +1065,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   height: auto; /* Maintain aspect ratio */
   margin: 0 auto; /* Center the icon */
   display: block; /* Make icon a block element for centering */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 .popup h3 {
