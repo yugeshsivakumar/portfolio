@@ -41,7 +41,27 @@
     <main>
         <aside class=sidebar data-sidebar>
             <div class=sidebar-info>
-                <figure class=avatar-box><img alt="Yugesh S" src=./assets/images/my-avatar.png width=80></figure>
+                <!-- REPLACED: Old avatar-box with new animated profile canvas -->
+                <div class="animated-avatar-box">
+                    <div class="animated-profile-frame">
+                        <!-- Outer Border -->
+                        <div class="animated-profile-border"></div>
+                        
+                        <!-- Dark Gradient Overlay -->
+                        <div class="animated-profile-overlay"></div>
+                        
+                        <!-- Profile Image -->
+                        <img src="./assets/images/my-avatar.png" alt="Yugesh S" class="animated-profile-img" loading="lazy">
+                        
+                        <!-- Hover Effects -->
+                        <div class="animated-profile-effects">
+                            <!-- Shine Effects -->
+                            <div class="animated-shine-1"></div>
+                            <div class="animated-shine-2"></div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class=info-content>
                     <h1 class=name title="Yugesh S">Yugesh S</h1>
                     <p class=title>Software & Data Engineer

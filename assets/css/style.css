@@ -1372,6 +1372,113 @@ textarea.form-input::-webkit-resizer {
   }
 }
 
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 1; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 2s infinite;
+}
+
+/* Animated Profile Canvas Styles */
+.animated-avatar-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.animated-profile-frame {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(255,215,0,0.4);
+  transform: scale(1);
+  transition: all 0.7s ease;
+  z-index: 10;
+}
+
+.animated-profile-frame:hover {
+  transform: scale(1.05);
+}
+
+.animated-profile-border {
+  position: absolute;
+  inset: 0;
+  border: 4px solid rgba(255, 196, 0, 0.3);
+  border-radius: 50%;
+  z-index: 20;
+  transition: all 0.7s ease;
+}
+
+.animated-profile-frame:hover .animated-profile-border {
+  border-color: rgba(255, 196, 0, 0.6);
+  transform: scale(1.05);
+}
+
+.animated-profile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+  z-index: 10;
+  transition: opacity 0.7s ease;
+}
+
+.animated-profile-frame:hover .animated-profile-overlay {
+  opacity: 0;
+}
+
+.animated-profile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.7s ease;
+}
+
+.animated-profile-frame:hover .animated-profile-img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.animated-profile-effects {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 20;
+  transition: all 0.7s ease;
+}
+
+.animated-profile-frame:hover .animated-profile-effects {
+  opacity: 1;
+}
+
+.animated-shine-1 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 0, 0.2) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 1s ease;
+}
+
+.animated-profile-frame:hover .animated-shine-1 {
+  transform: translateX(100%);
+}
+
+.animated-shine-2 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 0, 0.1) 50%, transparent 100%);
+  transform: translateY(100%);
+  transition: transform 1s ease 0.1s;
+}
+
+.animated-profile-frame:hover .animated-shine-2 {
+  transform: translateY(-100%);
+}
+
 @media (min-width:1250px) {
   body::-webkit-scrollbar {
     width: 20px
