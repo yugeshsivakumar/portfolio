@@ -27,11 +27,18 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Use RESEND_API_KEY instead of VITE_RESEND_API_KEY
+    const apiKey = process.env.RESEND_API_KEY;
+    
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY is not configured');
+    }
+
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.VITE_RESEND_API_KEY}`,
+        'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from: 'Portfolio Contact <onboarding@resend.dev>',

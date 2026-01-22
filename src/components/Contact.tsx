@@ -26,41 +26,48 @@ const Contact = ({ isActive }: ContactProps) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!isFormValid) return;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid) return;
 
-  setIsSubmitting(true);
+    setIsSubmitting(true);
 
-  try {
-    // Use different URLs for development and production
-    const apiUrl = import.meta.env.DEV 
-      ? 'http://localhost:3001/api/send-email'  // Development
-      : '/api/send-email';                       // Production (Vercel)
+    try {
+      // Use different URLs for development and production
+      const apiUrl = import.meta.env.DEV 
+        ? 'http://localhost:3001/api/send-email'  // Development (local server)
+        : '/api/send-email';                       // Production (Vercel serverless function)
 
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const result = await response.json();
+      // Check if response is JSON before parsing
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned non-JSON response. API endpoint may not be configured correctly.');
+      }
 
-    if (result.success) {
-      alert('Message sent successfully! ✅');
-      setFormData({ fullname: '', email: '', message: '' });
-    } else {
-      throw new Error(result.error || 'Failed to send message');
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        alert('Message sent successfully! ✅');
+        setFormData({ fullname: '', email: '', message: '' });
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      alert(`Error sending message: ${errorMessage} ❌`);
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    console.error('Error sending message: ', error);
-    alert('Error sending message. Please try again later ❌.');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   const copyBtcAddress = () => {
     const btcAddress = 'bc1qw8g73zlrmnph6lhmrrpmh4lsmwwgqz2kefp387';
