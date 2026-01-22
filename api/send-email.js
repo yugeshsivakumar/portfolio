@@ -1,4 +1,5 @@
-export default async function handler(req, res) {
+// api/send-email.js
+module.exports = async (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,11 +28,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Use RESEND_API_KEY instead of VITE_RESEND_API_KEY
+    // Use RESEND_API_KEY environment variable
     const apiKey = process.env.RESEND_API_KEY;
     
     if (!apiKey) {
-      throw new Error('RESEND_API_KEY is not configured');
+      console.error('RESEND_API_KEY is not configured');
+      return res.status(500).json({ success: false, error: 'Server configuration error' });
     }
 
     const response = await fetch('https://api.resend.com/emails', {
@@ -57,12 +59,12 @@ export default async function handler(req, res) {
     const result = await response.json();
 
     if (response.ok) {
-      res.status(200).json({ success: true, data: result });
+      return res.status(200).json({ success: true, data: result });
     } else {
       throw new Error(result.message || 'Failed to send email');
     }
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ success: false, error: error.message });
+    return res.status(500).json({ success: false, error: error.message });
   }
-}
+};
