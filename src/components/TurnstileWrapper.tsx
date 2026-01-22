@@ -6,6 +6,7 @@ interface TurnstileWrapperProps {
 }
 
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || '';
+const VERIFICATION_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 const TurnstileWrapper = ({ children }: TurnstileWrapperProps) => {
   const [isVerified, setIsVerified] = useState(false);
@@ -21,19 +22,43 @@ const TurnstileWrapper = ({ children }: TurnstileWrapperProps) => {
       return;
     }
 
-    // Check if already verified in this session
-    const verified = sessionStorage.getItem('turnstile_verified');
-    if (verified === 'true') {
-      setIsVerified(true);
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
+    // Check if already verified and if verification is still valid
+    const verificationData = localStorage.getItem('turnstile_verified');
+    
+    if (verificationData) {
+      try {
+        const { verified, timestamp } = JSON.parse(verificationData);
+        const now = Date.now();
+        
+        // Check if verification is still valid (within 24 hours)
+        if (verified && (now - timestamp) < VERIFICATION_EXPIRY) {
+          setIsVerified(true);
+          setIsLoading(false);
+          return;
+        } else {
+          // Verification expired, clear it
+          localStorage.removeItem('turnstile_verified');
+        }
+      } catch (error) {
+        // Invalid data, clear it
+        localStorage.removeItem('turnstile_verified');
+      }
     }
+    
+    setIsLoading(false);
   }, [isDevelopment]);
 
   const handleTurnstileSuccess = (token: string) => {
     console.log('Turnstile verification successful');
-    sessionStorage.setItem('turnstile_verified', 'true');
+    
+    // Store verification with timestamp
+    const verificationData = {
+      verified: true,
+      timestamp: Date.now(),
+      token: token // Optional: store token if needed for backend verification
+    };
+    
+    localStorage.setItem('turnstile_verified', JSON.stringify(verificationData));
     setIsVerified(true);
   };
 
