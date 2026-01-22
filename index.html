@@ -1,96 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yugesh Portfolio</title>
-    <meta
-      name="description"
-      content="Portfolio of Yugesh S, Yugesh S, Yugesh Sivakumar, portfolio, "
-    />
-    <meta
-      name="keywords"
-      content="Yugesh, Yugesh S, Yugesh Sivakumar, portfolio, software engineer, data engineer"
-    />
-    <link rel="icon" href="assets/images/icon2.png" type="image/png" />
-
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: black;
-        color: white;
-      }
-
-      #lottie-player {
-        width: 400px;
-        height: 400px;
-        display: none;
-      }
-
-      #loading-text {
-        display: none;
-      }
-
-      #captcha-container {
-        display: none;
-      }
-    </style>
-
-    <!-- Turnstile Script -->
-    <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-      async
-      defer
-    ></script>
-  </head>
-  <body>
-    <!-- Loading animation -->
-    <dotlottie-player
-      id="lottie-player"
-      src="https://lottie.host/638e7cc4-6515-42f7-af8b-0671006cab66/0al9zw5NXR.json"
-      background="transparent"
-      speed="1"
-      loop
-      autoplay
-    >
-    </dotlottie-player>
-    <p id="loading-text" style="text-align: center">
-      Loading portfolio, please wait...
-    </p>
-
-    <!-- Turnstile CAPTCHA -->
-    <div
-      id="captcha-container"
-      class="cf-turnstile"
-      data-sitekey="0x4AAAAAAAw55oPqZ_c8q3Vx"
-      data-callback="onCaptchaSuccess"
-    ></div>
-
-    <script
-      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-      type="module"
-    ></script>
-
-    <script>
-      function showLoadingContent() {
-        document.getElementById("lottie-player").style.display = "block";
-        document.getElementById("loading-text").style.display = "block";
-
-        setTimeout(function () {
-          document.getElementById("captcha-container").style.display = "block";
-        }, 5000);
-      }
-
-      function onCaptchaSuccess(token) {
-        window.location.href = "portfolio.html";
-      }
-
-      setTimeout(showLoadingContent, 300);
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Yugesh S | Portfolio</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Yugesh S | Software & Data Engineer Portfolio" />
+    <meta name="description" content="Explore the portfolio of Yugesh S - Software and Data Engineer specializing in Machine Learning, Data Science, Web Development. View projects, blog posts, and professional experience." />
+    <meta name="keywords" content="Yugesh S, Yugesh Sivakumar, Software Engineer, Data Engineer, Machine Learning, Data Science, Web Development, Python, React, Portfolio" />
+    <meta name="author" content="Yugesh S" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/icon2.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/images/icon2.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yugesh.me/" />
+    <meta property="og:title" content="Yugesh S | Software & Data Engineer Portfolio" />
+    <meta property="og:description" content="Explore the portfolio of Yugesh S - Software and Data Engineer specializing in Machine Learning, Data Science, and Web Development." />
+    <meta property="og:image" content="/images/my-avatar.png" />
+    <meta property="og:site_name" content="Yugesh Portfolio" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://yugesh.me/" />
+    <meta name="twitter:title" content="Yugesh S | Software & Data Engineer Portfolio" />
+    <meta name="twitter:description" content="Explore the portfolio of Yugesh S - Software and Data Engineer specializing in Machine Learning, Data Science, and Web Development." />
+    <meta name="twitter:image" content="/images/my-avatar.png" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yugesh.me/" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yugesh S",
+      "alternateName": "Yugesh Sivakumar",
+      "url": "https://yugesh.me",
+      "image": "/images/my-avatar.png",
+      "jobTitle": "Software & Data Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/yugeshsivakumar/",
+        "https://github.com/yugeshsivakumar",
+        "https://medium.com/@Yugesh_S"
+      ],
+      "knowsAbout": ["Machine Learning", "Data Science", "Web Development", "Python", "React", "Data Analysis"]
+    }
     </script>
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#121212" />
+    <meta name="msapplication-TileColor" content="#121212" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
