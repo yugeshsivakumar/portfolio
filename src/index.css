@@ -2081,3 +2081,21 @@ article.active {
     bottom: 20px;
   }
 }
+
+/* Mobile-specific styles for service items - CENTER ICONS */
+@media (max-width: 580px) {
+  .service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .service-icon-box {
+    margin-bottom: 15px;
+  }
+
+  .service-content-box {
+    width: 100%;
+  }
+}
