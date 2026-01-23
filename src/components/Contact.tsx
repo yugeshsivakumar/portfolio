@@ -81,7 +81,7 @@ const Contact = ({ isActive }: ContactProps) => {
   return (
     <article className={`contact ${isActive ? 'active' : ''}`} data-page="contact">
       <header>
-        <h2 className="h2 article-title">Contact</h2>
+        <h1 className="h2 article-title">Contact</h1>
       </header>
 
       <section className="mapbox" data-mapbox>

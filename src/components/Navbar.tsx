@@ -4,7 +4,7 @@ const Navbar = ({ activePage }: { activePage?: string }) => {
   const location = useLocation();
   
   const pages = [
-    { id: 'about', label: 'About', path: '/' },
+    { id: 'about', label: 'About', path: '/about' },
     { id: 'resume', label: 'Resume', path: '/resume' },
     { id: 'blog', label: 'Blog', path: '/blog' },
     { id: 'portfolio', label: 'Projects', path: '/projects' },

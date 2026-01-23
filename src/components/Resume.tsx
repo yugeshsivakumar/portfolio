@@ -54,7 +54,7 @@ const Resume = ({ isActive }: ResumeProps) => {
   return (
     <article className={`resume ${isActive ? 'active' : ''}`} data-page="resume">
       <header>
-        <h2 className="h2 article-title">Resume</h2>
+        <h1 className="h2 article-title">Resume</h1>
       </header>
 
       <section className="timeline">

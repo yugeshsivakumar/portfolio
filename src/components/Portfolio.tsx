@@ -59,7 +59,7 @@ const Portfolio = ({ isActive }: PortfolioProps) => {
   return (
     <article className={`portfolio ${isActive ? 'active' : ''}`} data-page="portfolio">
       <header>
-        <h2 className="h2 article-title">Projects</h2>
+        <h1 className="h2 article-title">Projects</h1>
       </header>
 
       <section className="blog">

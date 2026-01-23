@@ -29,7 +29,7 @@ const About = ({ isActive }: AboutProps) => {
   return (
     <article className={`about ${isActive ? 'active' : ''}`} data-page="about">
       <header>
-        <h2 className="h2 article-title">About me</h2>
+        <h1 className="h2 article-title">About me</h1>
       </header>
 
       <section className="about-text">
