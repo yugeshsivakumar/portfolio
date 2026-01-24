@@ -7,6 +7,22 @@ interface PortfolioProps {
 const Portfolio = ({ isActive }: PortfolioProps) => {
   const projects = [
     {
+      href: 'https://oneai.yugesh.me',
+      image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*VAGt6Sqi1lQOcGYu9UHgiQ.jpeg',
+      alt: 'One-AI',
+      category: 'Chatbot',
+      title: 'One AI',
+      tech: 'Python + TS',
+    },
+    {
+      href: 'https://github.com/yugeshsivakumar/Finetune_llm',
+      image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*s0-QWUqpCo3vDwMkkkrg2A.png',
+      alt: 'Finetune SLM',
+      category: 'Jupyter notebook',
+      title: 'Finetune SLM',
+      tech: 'Python',
+    },
+    {
       href: 'https://yugesh.me/shop',
       image: 'https://www.techyleaf.in/wp-content/uploads/2023/04/What-20is-20Affiliate-20Marketing-20.webp',
       alt: 'Affiliate Website',
@@ -23,12 +39,12 @@ const Portfolio = ({ isActive }: PortfolioProps) => {
       tech: 'Html + CSS + JS',
     },
     {
-      href: 'https://uylldcq2c8gqozomeofkgr.streamlit.app/',
-      image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/0*B6ng0DrYAUWo7iCW.jpg',
-      alt: 'Touch Typing Analysis',
+      href: 'https://github.com/yugeshsivakumar/deepsearch-rag',
+      image: 'https://miro.medium.com/v2/resize:fit:640/format:webp/1*Mtf_nojvfl-05XhiwvCJQA.jpeg',
+      alt: 'AI-powered search engine',
       category: 'Web',
-      title: 'Touch Typing Analysis',
-      tech: 'Python + Streamlit',
+      title: 'AI-powered search engine',
+      tech: 'Python + html + CSS',
     },
     {
       href: 'https://lovely-sprinkles-82a385.netlify.app/',
@@ -37,22 +53,6 @@ const Portfolio = ({ isActive }: PortfolioProps) => {
       category: 'Web',
       title: 'Obsidian knowledge-base',
       tech: 'Netlify',
-    },
-    {
-      href: 'https://github.com/yugeshsivakumar/Clustering-with-FiftyOne',
-      image: 'https://docs.voxel51.com/_images/clustering_preview.jpg',
-      alt: 'Clustering with FiftyOne',
-      category: 'Jupyter notebook',
-      title: 'Clustering with FiftyOne',
-      tech: 'Python + FiftyOne',
-    },
-    {
-      href: 'https://github.com/yugeshsivakumar/Generative-Adversarial-Networks-for-Image-Creation',
-      image: 'https://editor.analyticsvidhya.com/uploads/393951_t78gwhhw-hn1CgXc1K89wA.png',
-      alt: 'Generative Adversarial Networks for Image Generation',
-      category: 'Jupyter notebook',
-      title: 'Generative Adversarial Networks for Image Generation',
-      tech: 'Python',
     },
   ];
 
