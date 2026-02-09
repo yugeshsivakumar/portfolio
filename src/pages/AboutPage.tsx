@@ -12,7 +12,7 @@ const AboutPage = () => {
         canonical="/"
       />
       <Sidebar avatarSrc="/images/my-avatar.png" />
-      
+
       <div className="main-content">
         <Navbar activePage="about" />
         <About isActive={true} />
